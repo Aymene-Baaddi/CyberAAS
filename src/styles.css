@@ -1,0 +1,241 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Kryptos — cybersecurity as a service for Kuwait.
+ * Sections alternate ink and paper. Type is Space Grotesk, indexes are JetBrains Mono.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-glow: var(--glow);
+  --color-alert: var(--alert);
+  --color-alert-foreground: var(--alert-foreground);
+  --color-signal: var(--signal);
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.16 0 0);
+  --card: oklch(0.995 0.003 95);
+  --card-foreground: oklch(0.16 0 0);
+  --popover: oklch(0.995 0.003 95);
+  --popover-foreground: oklch(0.16 0 0);
+  --primary: oklch(0.14 0 0);
+  --primary-foreground: oklch(0.98 0.005 95);
+  --secondary: oklch(0.94 0.008 95);
+  --secondary-foreground: oklch(0.16 0 0);
+  --muted: oklch(0.94 0.008 95);
+  --muted-foreground: oklch(0.42 0 0);
+  --accent: oklch(0.94 0.012 25);
+  --accent-foreground: oklch(0.4 0.16 25);
+  --destructive: oklch(0.52 0.2 25);
+  --destructive-foreground: oklch(0.98 0.005 95);
+  --alert: oklch(0.52 0.2 25);
+  --alert-foreground: oklch(0.98 0.005 95);
+  --signal: oklch(0.52 0.19 145);
+  --glow: oklch(0.52 0.2 25 / 28%);
+  --border: oklch(0.16 0 0 / 14%);
+  --input: oklch(0.16 0 0 / 16%);
+  --ring: oklch(0.52 0.2 25);
+  --chart-1: oklch(0.52 0.2 25);
+  --chart-2: oklch(0.28 0 0);
+  --chart-3: oklch(0.62 0.12 70);
+  --chart-4: oklch(0.55 0.08 160);
+  --chart-5: oklch(0.45 0 0);
+}
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: auto;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    font-weight: 500;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+}
+
+@keyframes term-blink {
+  50% { opacity: 0; }
+}
+
+.term-cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 0.95em;
+  margin-left: 2px;
+  background: var(--signal);
+  vertical-align: -0.12em;
+  animation: term-blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .term-cursor {
+    animation: none;
+  }
+}
+
+.viewport-section {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-stage {
+  background-color: #fff;
+}
+
+.hero-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  will-change: transform;
+}
+
+.hero-orb-green {
+  top: 18%;
+  left: -6%;
+  width: 28vw;
+  height: 28vw;
+  background: oklch(0.89 0.28 142);
+  opacity: 0.55;
+  animation: hero-float-green 22s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.hero-orb-red {
+  right: -4%;
+  bottom: 8%;
+  width: 26vw;
+  height: 26vw;
+  background: oklch(0.62 0.22 25);
+  opacity: 0.55;
+  animation: hero-float-red 28s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes hero-float-green {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  25% { transform: translate3d(14%, 10%, 0) scale(1.08); }
+  50% { transform: translate3d(4%, 18%, 0) scale(0.94); }
+  75% { transform: translate3d(-10%, 6%, 0) scale(1.05); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes hero-float-red {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  30% { transform: translate3d(-16%, -10%, 0) scale(1.1); }
+  55% { transform: translate3d(-6%, -18%, 0) scale(0.92); }
+  80% { transform: translate3d(10%, -5%, 0) scale(1.06); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb {
+    animation: none;
+  }
+}
+
+.tone-ink {
+  color-scheme: dark;
+  --background: oklch(0 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.14 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.18 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --border: oklch(1 0 0 / 16%);
+  --primary: oklch(0.97 0 0);
+  --primary-foreground: oklch(0 0 0);
+  --signal: oklch(0.89 0.28 142);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.tone-paper {
+  color-scheme: light;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0 0);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.4 0 0);
+  --border: oklch(0.12 0 0 / 14%);
+  --primary: oklch(0.1 0 0);
+  --primary-foreground: oklch(0.98 0 0);
+  background-color: var(--background);
+  color: var(--foreground);
+}
